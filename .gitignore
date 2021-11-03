@@ -1,6 +1,9 @@
 #Dependencies
 node_modules
 
+#Env files
+.env
+
 #os generated files
 .DS_Store
 
