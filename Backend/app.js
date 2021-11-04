@@ -3,6 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
+//authjwt middleware
+const authjwt = require('./helperfiles/authjwt');
+const errors = require('./helperfiles/errors');
+
+
 
 
 const api = process.env.API_URL;
@@ -28,7 +33,10 @@ app.use(express.json())
 
 //setting up cors
 app.use(cors());
-app.options('*', cors())
+app.options('*', cors());
+app.use(authjwt());
+app.use(errors);
+
 
 
 //Routes
@@ -52,5 +60,28 @@ app.listen(3000, () => {
     console.log("Server is running at http://localhost:3000");
 })
 
+
+
+
+//routes
+// const authRoute = require('./routes/auth');
+// const userRoute = require('./routes/user');
+// const categoryRoute = require('./routes/category');
+// const productRoute = require('./routes/product');
+// const orderRoute = require('./routes/order');
+// const cartRoute = require('./routes/cart');
+// const addressRoute = require('./routes/address');
+// const paymentRoute = require('./routes/payment');
+// const reviewRoute = require('./routes/review');
+// const wishlistRoute = require('./routes/wishlist');
+// const adminRoute = require('./routes/admin');
+// const adminCategoryRoute = require('./routes/adminCategory');
+// const adminProductRoute = require('./routes/adminProduct');
+// const adminOrderRoute = require('./routes/adminOrder');
+// const adminUserRoute = require('./routes/adminUser');
+// const adminReviewRoute = require('./routes/adminReview');
+// const adminAddressRoute = require('./routes/adminAddress');
+// const adminPaymentRoute = require('./routes/adminPayment');
+// const adminWishlistRoute = require('./routes/adminWishlist');
 
 
