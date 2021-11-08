@@ -197,6 +197,20 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// Delete a product using asnc await
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const product = await Product.findByIdAndDelete(req.params.id);
+//         if (!product) {
+//             res.status(404).json({ message: 'Product not found' });
+//         }
+//         res.json({ message: 'Product deleted successfully' });
+//     } catch (err) {
+//         res.json({ message: 'Product not found' });
+//     }
+// });
+
+
 //Delete a product api/category/:id
 router.delete('/:id', (req, res) => {
     Product.findByIdAndRemove(req.params.id)
@@ -211,6 +225,7 @@ router.delete('/:id', (req, res) => {
             return res.status(500).send(err);
         });
 });
+
 
 
 //count of all products http://localhost:3000/api/v1/products/get/totalcount
@@ -256,3 +271,4 @@ router.get(`/get/featured/:count`, async (req, res) => {
 
 
 module.exports = router;
+
