@@ -121,7 +121,7 @@ router.post('/login', async (req, res) => {
         }
         const passwordCheck = bcrypt.compareSync(req.body.password, user.hashedPassword);
         if (passwordCheck) {
-            const token = jwt.sign({ _id: user._id ,isAdmin: user.isAdmin}, process.env.secret ,{ expiresIn: '1w' });
+            const token = jwt.sign({ _id: user._id, isAdmin: user.isAdmin }, process.env.secret, { expiresIn: '1w' });
             res.status(200).send({
                 success: true,
                 user: user.email,
@@ -193,8 +193,6 @@ router.get('/get/totalcount', async (req, res) => {
         res.json({ message: err });
     }
 });
-
-
 
 
 

@@ -162,6 +162,8 @@ router.get('/:productId', async (req, res) => {
 //     }
 // });
 
+
+//post a product with image
 router.post(`/`, uploadOptions.single('image'), async (req, res) => {
     const category = await Category.findById(req.body.category);
     if (!category) return res.status(400).send('Invalid Category');
@@ -222,6 +224,8 @@ router.post(`/`, uploadOptions.single('image'), async (req, res) => {
 //     }
 // });
 
+
+//update a product with image
 router.put('/:id', uploadOptions.single('image'), async (req, res) => {
     if (!mongoose.isValidObjectId(req.params.id)) {
         return res.status(400).send('Invalid Product Id');
@@ -267,7 +271,9 @@ router.put('/:id', uploadOptions.single('image'), async (req, res) => {
     res.send(updatedProduct);
 });
 
-router.put('/gallery-images/:id', uploadOptions.array('images', 10), async (req, res) => {
+
+//add multiple images to same product
+router.put('/gallery-images/:id', uploadOptions.array('images', 5), async (req, res) => {
     if (!mongoose.isValidObjectId(req.params.id)) {
         return res.status(400).send('Invalid Product Id');
     }
@@ -388,14 +394,6 @@ router.get(`/get/featured/:count`, async (req, res) => {
         res.json({ message: err });
     }
 });
-
-
-
-
-
-
-
-
 
 
 

@@ -5,11 +5,11 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description:{
+    description: {
         type: String,
         required: true,
     },
-    moreDescription:{
+    moreDescription: {
         type: String,
         default: '',
     },
@@ -17,14 +17,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: '',
     },
-    images:[{
+    images: [{
         type: String,
     }],
-    brand:{
+    brand: {
         type: String,
         default: '',
     },
-    price:{
+    price: {
         type: Number,
         default: 0,
     },
@@ -58,7 +58,7 @@ const productSchema = new mongoose.Schema({
 
 });
 
-productSchema.virtual('id').get(function() {
+productSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
 
