@@ -36,6 +36,7 @@ app.use(cors());
 app.options('*', cors());
 app.use(authjwt());
 app.use(errors);
+app.use('/resources/uploads',express.static(__dirname+'/resources/uploads'));
 
 
 
